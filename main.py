@@ -20,9 +20,39 @@ line_token = 'Ufc8cfcb89117f9b5b00770bf540bdcb3'
 
 def lineFlex():
     jsonFlex = {
-        "type": "carousel",
-        "contents": main()
-    }
+        "type": "bubble",
+        "hero": {
+            "type": "image",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover"
+        },
+        "footer": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "spacer",
+                    "size": "xxl"
+                },
+                {
+                    "type": "button",
+                    "style": "primary",
+                    "color": "#905c44",
+                    "action": {
+                        "type": "uri",
+                        "label": "Add to Cart",
+                        "uri": "https://linecorp.com"
+                    }
+                },
+                {
+                    "type": "spacer",
+                    "size": "xxl"
+                }
+            ]
+        }
+    } 
     flex_message2 = FlexSendMessage(
         alt_text='Python 01',
         contents=jsonFlex
@@ -132,7 +162,12 @@ def main():
                                     "spacing": "sm",
                                     "borderColor": "#ffffff",
                                     "margin": "xxl",
-                                    "height": "40px"
+                                    "height": "40px",
+                                    "action": {
+                                        "type": "message",
+                                        "label": "action",
+                                        "text": str(row['name']),
+                                    }
                                 }
                             ],
                             "position": "absolute",
@@ -167,9 +202,9 @@ def main():
                     ],
                 "paddingAll": "0px"
             }
-        } 
-        json_body.append(content) 
-   
+        }
+        json_body.append(content)
+
     return json_body
 
 
