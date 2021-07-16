@@ -49,11 +49,8 @@ def main():
     sheetName = 'Products'
     url = 'https://docs.google.com/spreadsheets/d/{0}/gviz/tq?tqx=out:csv&sheet={1}'.format(
         googleSheetId, sheetName)
-    df = pd.read_csv(url)
+    df = pd.read_csv(url) 
 
-
-
-    
     json_body = []
     for index, row in df.iterrows():
             y = {
