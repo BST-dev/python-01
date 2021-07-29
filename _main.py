@@ -50,7 +50,8 @@ def main():
     url = 'https://docs.google.com/spreadsheets/d/{0}/gviz/tq?tqx=out:csv&sheet={1}'.format(
         googleSheetId, sheetName)
     df = pd.read_csv(url) 
-
+    df['price'] = df['price'].str.replace(',', '').astype(float)
+    df = df.loc[df['category'] == 'เดรส']
     json_body = []
     for index, row in df.iterrows():
             y = {
